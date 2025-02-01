@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -6,6 +7,8 @@ using System.Runtime.InteropServices;
 namespace NativeLib.API;
 
 public class NativeLoader {
+
+    private static List<string> loadedMods = new List<string>();
 
     // Loads a native (.dll, .so, .dylib) file from the Embedded resources of a mod
     public static void LoadNativeLibrary(string assemblyName, string libName) {
@@ -22,8 +25,8 @@ public class NativeLoader {
 
         Console.WriteLine("[NativeLib] Loading: " + libName);
 
-        if (!NativeLib.loadedMods.Contains(assemblyName)) {
-            NativeLib.loadedMods.Add(assemblyName);
+        if (!loadedMods.Contains(assemblyName)) {
+            loadedMods.Add(assemblyName);
         }
 
         // Loads the temporary file
@@ -41,8 +44,8 @@ public class NativeLoader {
         }
     }
 
-    public Boolean hadLoaded(string modNamespace) {
-        return NativeLib.loadedMods.Contains(modNamespace);
+    public bool hadLoaded(string assemblyName) {
+        return loadedMods.Contains(assemblyName);
     }
 
     [DllImport("kernel32.dll", SetLastError = true)]
