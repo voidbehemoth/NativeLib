@@ -1,0 +1,11 @@
+{
+    "HarmonyId": "voidbehemoth.nativelib",
+    "DisplayName": "NativeLib",
+    "Authors": [
+      "VoidBehemoth"
+    ],
+    "Description": "Makes loading native files easier.",
+    "Version": "1.0.00",
+    "RequiredMods": [],
+    "Settings": {}
+}
