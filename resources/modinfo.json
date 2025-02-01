@@ -6,6 +6,8 @@
     ],
     "Description": "Makes loading native files easier.",
     "Version": "1.0.00",
+    "Discord": "https://discord.gg/UdEWdBnFRU",
     "RequiredMods": [],
-    "Settings": {}
+    "Settings": {},
+    "ModLib": true
 }
