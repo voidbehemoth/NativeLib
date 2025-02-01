@@ -44,7 +44,7 @@ public class NativeLoader {
         }
     }
 
-    public bool hadLoaded(string assemblyName) {
+    public bool HasLoaded(string assemblyName) {
         return loadedMods.Contains(assemblyName);
     }
 
