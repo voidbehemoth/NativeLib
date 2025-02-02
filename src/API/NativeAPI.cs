@@ -11,11 +11,11 @@ public class NativeLoader {
     private static List<string> loadedMods = new List<string>();
 
     // Loads a native (.dll, .so, .dylib) file from the Embedded resources of a mod
-    public static void LoadNativeLibrary(string assemblyName, string libName) {
+    public static void LoadNativeLibrary(string assemblyName, string libName, Assembly assembly) {
         string tempPath = Path.Combine(Path.GetTempPath(), libName);
 
         // Creates temporary file to load
-        using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(assemblyName + ".resources." + libName))
+        using (Stream stream = assembly.GetManifestResourceStream(assemblyName + ".resources." + libName))
         using (FileStream fileStream = new FileStream(tempPath, FileMode.Create, FileAccess.Write))
         {
             stream.CopyTo(fileStream);
@@ -40,7 +40,7 @@ public class NativeLoader {
 
         if (handle == IntPtr.Zero)
         {
-            throw new Exception("Failed to load native library.");
+            throw new Exception("[NativeLib] Failed to load native library.");
         }
     }
 
