@@ -11,8 +11,10 @@ public class NativeLoader {
     private static List<string> loadedMods = new List<string>();
 
     // Loads a native (.dll, .so, .dylib) file from the Embedded resources of a mod
-    public static void LoadNativeLibrary(string assemblyName, string libName, Assembly assembly) {
+    public static void LoadNativeLibrary(string libName, Assembly assembly) {
         string tempPath = Path.Combine(Path.GetTempPath(), libName);
+
+        string assemblyName = assembly.GetName().Name;
 
         // Creates temporary file to load
         using (Stream stream = assembly.GetManifestResourceStream(assemblyName + ".resources." + libName))
